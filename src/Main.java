@@ -73,29 +73,38 @@ public class Main {
 	}
 	
 	public static void LinearSearch(double [] hshtble){
+		
 		int [] numProbes = new int [10001];
 		boolean [] foundArr = new boolean [100001];
 		int numfound = 0;
+		
 		for(int i=1;i<=10000;i++){
+			
 			//System.out.println("Searching for : " + i);
 			boolean found = false;
 			int loc = i%1019;
-			int numchecked = 0;
+			
 			while(found == false){
-				if(numchecked==1019){
+
+				if(hshtble[loc]==0){
 					break;
 				}
+				
 				numProbes[i]++;
+				
 				if(hshtble[loc]!=i){
-					numchecked++;
+					
 					if((loc+1)>=1019){
 						loc=0;
 					}
+					
 					else{
 						loc++;
 					}
 				}
+				
 				else{
+					
 					numProbes[i]++;
 					found = true;
 					foundArr[i] = true;
@@ -219,11 +228,13 @@ public class Main {
 			int loc = hash(i);
 			int newloc = loc;
 			boolean found = false;
-			int numchecked = 0;
-			while(found == false && numchecked<1019 && modifier < 509){
+
+			while(found == false &&  modifier < 509){
+				if(hshtble[newloc]==0){
+					break;
+				}
 				if(hshtble[newloc]!=i){
 					numProbes[i]++;
-					numchecked++;
 					if(addOrsub == 1){
 						//System.out.println("addition");
 						newloc = loc +(modifier*modifier);
