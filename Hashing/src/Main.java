@@ -25,7 +25,6 @@ public class Main {
 		if (percent == 60){
 			numToMake = 611;
 		}
-		
 		else{
 			numToMake = 815;
 		}
@@ -33,14 +32,12 @@ public class Main {
 		ArrayList<Double> valList = new ArrayList<Double>(numToMake);
 		
 		while(numAdded<numToMake){
-			
 			double itm = genRanNum();
 			
 			if(!valList.contains(itm)){
 				valList.add(itm);
 				//System.out.println("added " + itm + " to list of values to hash");
 				numAdded++;
-				
 			}
 		}
 		
@@ -51,12 +48,10 @@ public class Main {
 			boolean added = false;
 			
 			while(added == false){
-				
 				if(hashtable[loc]==0){
 					hashtable[loc] = valList.get(i);
 					added = true;
 				}
-				
 				else{
 					if((loc+1) >= 1019){
 						loc = 0;
@@ -79,13 +74,11 @@ public class Main {
 		int numfound = 0;
 		
 		for(int i=1;i<=10000;i++){
-			
 			//System.out.println("Searching for : " + i);
 			boolean found = false;
 			int loc = i%1019;
 			
 			while(found == false){
-
 				if(hshtble[loc]==0){
 					break;
 				}
@@ -93,11 +86,9 @@ public class Main {
 				numProbes[i]++;
 				
 				if(hshtble[loc]!=i){
-					
 					if((loc+1)>=1019){
 						loc=0;
 					}
-					
 					else{
 						loc++;
 					}
@@ -149,7 +140,6 @@ public class Main {
 		if (percent == 60){
 			numToMake = 611;
 		}
-		
 		else{
 			numToMake = 815;
 		}
@@ -164,7 +154,6 @@ public class Main {
 				valList.add(itm);
 				//System.out.println("added " + itm + " to list of values to hash");
 				numAdded++;
-				
 			}
 		}
 		
