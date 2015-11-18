@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>hashing</name>
+=======
+	<name>Hashing</name>
+>>>>>>> a3dc6760e35d11ffbd89626c1408f7534f47812b
 	<comment></comment>
 	<projects>
 	</projects>
