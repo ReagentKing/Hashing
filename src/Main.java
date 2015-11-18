@@ -96,6 +96,7 @@ public class Main {
 					}
 				}
 				else{
+					numProbes[i]++;
 					found = true;
 					foundArr[i] = true;
 					numfound++;
@@ -248,6 +249,7 @@ public class Main {
 					}
 				}
 				else{
+					numProbes[i]++;
 					found = true;
 					numfound++;
 					foundArr[i] = true;
