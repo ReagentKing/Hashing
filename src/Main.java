@@ -5,10 +5,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		//System.out.println("Linear Probing:");
+		System.out.println("Linear Probing:");
 		
-		//linearFill(60);
-		//linearFill(80);
+		linearFill(60);
+		linearFill(80);
 		
 		System.out.println("Quadratic Probing:");
 		
@@ -209,6 +209,7 @@ public class Main {
 	
 	public static void quadSearch(double [] hshtble){
 		int [] numProbes = new int[10001];
+		boolean [] foundArr = new boolean[10001];
 		int numfound = 0;
 		
 		for(int i=1;i<=10000;i++){
@@ -223,42 +224,75 @@ public class Main {
 					numProbes[i]++;
 					numchecked++;
 					if(addOrsub == 1){
-						System.out.println("addition");
+						//System.out.println("addition");
 						newloc = loc +(modifier*modifier);
-						System.out.println("next loc initially " + newloc);
+						//System.out.println("next loc initially " + newloc);
 						if(newloc>=1019){
-							System.out.println("changed");
-							newloc -= 1019;
-							if(newloc>=1019){
-								newloc-=1019;
-							}
+							//System.out.println("changed");
+							newloc =fixIndex(newloc);
 						}
 						addOrsub = 2;
-						System.out.println("added: location to look next is " + newloc);
+						//System.out.println("added: location to look next is " + newloc);
 					}
 					else{
-						System.out.println("subtraction");
+						//System.out.println("subtraction");
 						newloc = loc - (modifier*modifier);
-						System.out.println("next loc initially " + newloc);
+						//System.out.println("next loc initially " + newloc);
 						if(newloc<0){
-							System.out.println("changed");
-							newloc += 1019;
-							if(newloc<0){
-								newloc+=1019;
-							}
+							//System.out.println("changed");
+							newloc=fixIndex(newloc);
 						}
 						modifier++;
 						addOrsub = 1;
-						System.out.println("subtracted: location to look next is " + newloc);
+						//System.out.println("subtracted: location to look next is " + newloc);
 					}
 				}
 				else{
 					found = true;
 					numfound++;
+					foundArr[i] = true;
 					//System.out.printf("%d: found : num probes required: %d\n", i,numProbes[i]+1);
 				}
 			}
 		}
+		int numNotFound = 0;
+		int totalNumProbesFound = 0;
+		int totalNumProbesNot = 0;
+		double avgProbeFound = 0;
+		double avgProbeNot = 0;
+		
+		for(int i=0;i<numProbes.length;i++){
+				if(foundArr[i] == true){
+					totalNumProbesFound+=numProbes[i];
+				}
+				else{
+					totalNumProbesNot+=numProbes[i];
+					numNotFound++;
+				}
+		}
+		
+		avgProbeFound = (double)totalNumProbesFound/(double)numfound;
+		avgProbeNot = (double)totalNumProbesNot/(double)numNotFound;
+		
+		System.out.println("Total number successful searches: " + numfound);
+		//System.out.println("Total number of probes for successful: " + totalNumProbesFound);
+		System.out.println("Average number of probes per successful search: " + avgProbeFound);
+		//System.out.println("Total number of probes for unsuccessful: " + totalNumProbesNot);
+		System.out.println("Average number of probes per unsuccessful search: " + avgProbeNot);
+	}
+	
+	public static int fixIndex(int idx){
+		if(idx>=1019){
+			while(idx>1018){
+				idx-=1019;
+			}
+		}
+		else{
+			while(idx<0){
+				idx+=1019;
+			}
+		}
+		return idx;
 	}
 	
 	public static double genRanNum(){
